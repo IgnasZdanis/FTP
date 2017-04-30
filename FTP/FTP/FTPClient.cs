@@ -43,17 +43,20 @@ namespace FTP
             socket.Send(msg);
             int bytesRec = socket.Receive(bytes);
             String response = Encoding.ASCII.GetString(bytes, 0, bytesRec);
-            Console.WriteLine(response);
+            Console.WriteLine("Send response: " + response);
             return response;
         }
 
         public void PassiveMode()
         {
+            /*
             byte[] msg = Encoding.ASCII.GetBytes("PASV\r\n");
             socket.Send(msg);
             int bytesRec = socket.Receive(bytes);
             String response = Encoding.ASCII.GetString(bytes, 0, bytesRec);
-            Console.WriteLine(response);
+            */
+            String response = Send("PASV\r\n");
+            //Console.WriteLine(response
             response = response.Substring(27);
             response = response.Substring(0, response.Length - 3);
             String[] split = response.Split(',');
@@ -61,7 +64,6 @@ namespace FTP
             int port = int.Parse(split[4]) * 256 + int.Parse(split[5]);
             IPHostEntry ipHostInfo = Dns.Resolve(Dns.GetHostName());
             IPAddress ipAddress = ipHostInfo.AddressList[0];
-            Console.WriteLine(ipHostInfo.AddressList[0]);
             IPEndPoint remoteEP = new IPEndPoint(ipAddress, port);
 
             dataSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -81,13 +83,13 @@ namespace FTP
         public List<String> getList()
         {
             PassiveMode();
-            byte[] msg = Encoding.ASCII.GetBytes("LIST\r\n");
+            byte[] msg = Encoding.ASCII.GetBytes("NLST\r\n");
             socket.Send(msg);
             int bytesRec = dataSocket.Receive(bytes);
             String response = Encoding.ASCII.GetString(bytes, 0, bytesRec);
-            Console.WriteLine(response);
+            //Console.WriteLine(response);
             String[] files = response.Split('\n');
-            String[] info = files[0].Split(' ');
+            //String[] info = files[0].Split(' ');
             List<String> list = new List<string>();
             foreach(String file in files)
             {
@@ -96,10 +98,15 @@ namespace FTP
             bytesRec = socket.Receive(bytes);
             response = Encoding.ASCII.GetString(bytes, 0, bytesRec);
             Console.WriteLine(response);
-            for (int i = 0; i < info.Length; i++) {
-                Console.WriteLine(info[i]);
-            }
+            bytesRec = socket.Receive(bytes);
+            response = Encoding.ASCII.GetString(bytes, 0, bytesRec);
+            Console.WriteLine(response);
             return list;
+        }
+
+        public void changeDirectory(string folderName)
+        {
+            Send("CWD " + folderName);
         }
     }
 }

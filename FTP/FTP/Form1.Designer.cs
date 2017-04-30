@@ -33,9 +33,11 @@
             this.usernameBox = new System.Windows.Forms.TextBox();
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.disconnectButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.fileList = new System.Windows.Forms.ListBox();
+            this.enterFolderButton = new System.Windows.Forms.Button();
+            this.parentDirectoryButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // connectButton
@@ -84,16 +86,6 @@
             this.disconnectButton.UseVisualStyleBackColor = true;
             this.disconnectButton.Click += new System.EventHandler(this.disconnectButton_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(242, 294);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "PASV";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(479, 294);
@@ -112,14 +104,46 @@
             this.fileList.Size = new System.Drawing.Size(412, 173);
             this.fileList.TabIndex = 7;
             // 
+            // enterFolderButton
+            // 
+            this.enterFolderButton.Location = new System.Drawing.Point(26, 277);
+            this.enterFolderButton.Name = "enterFolderButton";
+            this.enterFolderButton.Size = new System.Drawing.Size(75, 23);
+            this.enterFolderButton.TabIndex = 8;
+            this.enterFolderButton.Text = "Enter folder";
+            this.enterFolderButton.UseVisualStyleBackColor = true;
+            this.enterFolderButton.Click += new System.EventHandler(this.enterFolderButton_Click);
+            // 
+            // parentDirectoryButton
+            // 
+            this.parentDirectoryButton.Location = new System.Drawing.Point(128, 277);
+            this.parentDirectoryButton.Name = "parentDirectoryButton";
+            this.parentDirectoryButton.Size = new System.Drawing.Size(91, 23);
+            this.parentDirectoryButton.TabIndex = 9;
+            this.parentDirectoryButton.Text = "Parent directory";
+            this.parentDirectoryButton.UseVisualStyleBackColor = true;
+            this.parentDirectoryButton.Click += new System.EventHandler(this.parentDirectoryButton_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(488, 174);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_2);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(575, 329);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.parentDirectoryButton);
+            this.Controls.Add(this.enterFolderButton);
             this.Controls.Add(this.fileList);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.disconnectButton);
             this.Controls.Add(this.passwordBox);
             this.Controls.Add(this.usernameBox);
@@ -141,9 +165,11 @@
         private System.Windows.Forms.TextBox usernameBox;
         private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.Button disconnectButton;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ListBox fileList;
+        private System.Windows.Forms.Button enterFolderButton;
+        private System.Windows.Forms.Button parentDirectoryButton;
+        private System.Windows.Forms.Button button1;
     }
 }
 
