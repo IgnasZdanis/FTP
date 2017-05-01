@@ -33,13 +33,18 @@
             this.usernameBox = new System.Windows.Forms.TextBox();
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.disconnectButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.fileList = new System.Windows.Forms.ListBox();
             this.enterFolderButton = new System.Windows.Forms.Button();
             this.parentDirectoryButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.downloadButton = new System.Windows.Forms.Button();
             this.uploadButton = new System.Windows.Forms.Button();
+            this.hostNameBox = new System.Windows.Forms.TextBox();
+            this.localListBox = new System.Windows.Forms.ListBox();
+            this.localEnterButton = new System.Windows.Forms.Button();
+            this.localBackButton = new System.Windows.Forms.Button();
+            this.pathBox = new System.Windows.Forms.TextBox();
+            this.renameButton = new System.Windows.Forms.Button();
+            this.renameText = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // connectButton
@@ -88,27 +93,17 @@
             this.disconnectButton.UseVisualStyleBackColor = true;
             this.disconnectButton.Click += new System.EventHandler(this.disconnectButton_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(479, 294);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "List";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // fileList
             // 
             this.fileList.FormattingEnabled = true;
-            this.fileList.Location = new System.Drawing.Point(26, 88);
+            this.fileList.Location = new System.Drawing.Point(333, 84);
             this.fileList.Name = "fileList";
-            this.fileList.Size = new System.Drawing.Size(412, 173);
+            this.fileList.Size = new System.Drawing.Size(230, 173);
             this.fileList.TabIndex = 7;
             // 
             // enterFolderButton
             // 
-            this.enterFolderButton.Location = new System.Drawing.Point(26, 277);
+            this.enterFolderButton.Location = new System.Drawing.Point(324, 265);
             this.enterFolderButton.Name = "enterFolderButton";
             this.enterFolderButton.Size = new System.Drawing.Size(75, 23);
             this.enterFolderButton.TabIndex = 8;
@@ -118,27 +113,17 @@
             // 
             // parentDirectoryButton
             // 
-            this.parentDirectoryButton.Location = new System.Drawing.Point(128, 277);
+            this.parentDirectoryButton.Location = new System.Drawing.Point(324, 294);
             this.parentDirectoryButton.Name = "parentDirectoryButton";
-            this.parentDirectoryButton.Size = new System.Drawing.Size(91, 23);
+            this.parentDirectoryButton.Size = new System.Drawing.Size(75, 23);
             this.parentDirectoryButton.TabIndex = 9;
-            this.parentDirectoryButton.Text = "Parent directory";
+            this.parentDirectoryButton.Text = "Back";
             this.parentDirectoryButton.UseVisualStyleBackColor = true;
             this.parentDirectoryButton.Click += new System.EventHandler(this.parentDirectoryButton_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(488, 174);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_2);
-            // 
             // downloadButton
             // 
-            this.downloadButton.Location = new System.Drawing.Point(263, 277);
+            this.downloadButton.Location = new System.Drawing.Point(405, 265);
             this.downloadButton.Name = "downloadButton";
             this.downloadButton.Size = new System.Drawing.Size(75, 23);
             this.downloadButton.TabIndex = 11;
@@ -148,7 +133,7 @@
             // 
             // uploadButton
             // 
-            this.uploadButton.Location = new System.Drawing.Point(363, 277);
+            this.uploadButton.Location = new System.Drawing.Point(161, 275);
             this.uploadButton.Name = "uploadButton";
             this.uploadButton.Size = new System.Drawing.Size(75, 23);
             this.uploadButton.TabIndex = 12;
@@ -156,18 +141,83 @@
             this.uploadButton.UseVisualStyleBackColor = true;
             this.uploadButton.Click += new System.EventHandler(this.uploadButton_Click);
             // 
+            // hostNameBox
+            // 
+            this.hostNameBox.Location = new System.Drawing.Point(12, 41);
+            this.hostNameBox.Name = "hostNameBox";
+            this.hostNameBox.Size = new System.Drawing.Size(100, 20);
+            this.hostNameBox.TabIndex = 13;
+            // 
+            // localListBox
+            // 
+            this.localListBox.FormattingEnabled = true;
+            this.localListBox.Location = new System.Drawing.Point(12, 110);
+            this.localListBox.Name = "localListBox";
+            this.localListBox.Size = new System.Drawing.Size(232, 147);
+            this.localListBox.TabIndex = 14;
+            // 
+            // localEnterButton
+            // 
+            this.localEnterButton.Location = new System.Drawing.Point(12, 265);
+            this.localEnterButton.Name = "localEnterButton";
+            this.localEnterButton.Size = new System.Drawing.Size(75, 23);
+            this.localEnterButton.TabIndex = 15;
+            this.localEnterButton.Text = "Enter folder";
+            this.localEnterButton.UseVisualStyleBackColor = true;
+            this.localEnterButton.Click += new System.EventHandler(this.localEnterButton_Click);
+            // 
+            // localBackButton
+            // 
+            this.localBackButton.Location = new System.Drawing.Point(12, 294);
+            this.localBackButton.Name = "localBackButton";
+            this.localBackButton.Size = new System.Drawing.Size(75, 23);
+            this.localBackButton.TabIndex = 16;
+            this.localBackButton.Text = "Back";
+            this.localBackButton.UseVisualStyleBackColor = true;
+            this.localBackButton.Click += new System.EventHandler(this.localBackButton_Click);
+            // 
+            // pathBox
+            // 
+            this.pathBox.Enabled = false;
+            this.pathBox.Location = new System.Drawing.Point(12, 84);
+            this.pathBox.Name = "pathBox";
+            this.pathBox.Size = new System.Drawing.Size(232, 20);
+            this.pathBox.TabIndex = 17;
+            // 
+            // renameButton
+            // 
+            this.renameButton.Location = new System.Drawing.Point(488, 265);
+            this.renameButton.Name = "renameButton";
+            this.renameButton.Size = new System.Drawing.Size(75, 23);
+            this.renameButton.TabIndex = 18;
+            this.renameButton.Text = "Rename";
+            this.renameButton.UseVisualStyleBackColor = true;
+            this.renameButton.Click += new System.EventHandler(this.renameButton_Click);
+            // 
+            // renameText
+            // 
+            this.renameText.Location = new System.Drawing.Point(463, 297);
+            this.renameText.Name = "renameText";
+            this.renameText.Size = new System.Drawing.Size(100, 20);
+            this.renameText.TabIndex = 19;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(575, 329);
+            this.Controls.Add(this.renameText);
+            this.Controls.Add(this.renameButton);
+            this.Controls.Add(this.pathBox);
+            this.Controls.Add(this.localBackButton);
+            this.Controls.Add(this.localEnterButton);
+            this.Controls.Add(this.localListBox);
+            this.Controls.Add(this.hostNameBox);
             this.Controls.Add(this.uploadButton);
             this.Controls.Add(this.downloadButton);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.parentDirectoryButton);
             this.Controls.Add(this.enterFolderButton);
             this.Controls.Add(this.fileList);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.disconnectButton);
             this.Controls.Add(this.passwordBox);
             this.Controls.Add(this.usernameBox);
@@ -189,13 +239,18 @@
         private System.Windows.Forms.TextBox usernameBox;
         private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.Button disconnectButton;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ListBox fileList;
         private System.Windows.Forms.Button enterFolderButton;
         private System.Windows.Forms.Button parentDirectoryButton;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button downloadButton;
         private System.Windows.Forms.Button uploadButton;
+        private System.Windows.Forms.TextBox hostNameBox;
+        private System.Windows.Forms.ListBox localListBox;
+        private System.Windows.Forms.Button localEnterButton;
+        private System.Windows.Forms.Button localBackButton;
+        private System.Windows.Forms.TextBox pathBox;
+        private System.Windows.Forms.Button renameButton;
+        private System.Windows.Forms.TextBox renameText;
     }
 }
 
