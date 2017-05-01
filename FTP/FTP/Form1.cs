@@ -103,7 +103,8 @@ namespace FTP
             if (client.loggedIn)
             {
                 String fileName = files[fileList.SelectedIndex];
-                client.DownloadFile(fileName);
+                client.DownloadFile(fileName, currentDirectory);
+                GetLocalList();
             }
         }
 
@@ -112,7 +113,12 @@ namespace FTP
             if (client.loggedIn)
             {
                 string filepath = localList[localListBox.SelectedIndex];
-                client.UploadFile(filepath);
+                if (!client.UploadFile(filepath))
+                {
+                    MessageBox.Show("Incorrect file!");
+                    return;
+                }
+
                 files = client.GetList();
                 fileList.DataSource = null;
                 fileList.DataSource = files;

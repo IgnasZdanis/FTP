@@ -113,7 +113,7 @@ namespace FTP
             return Send("CWD " + folderName);
         }
 
-        public void DownloadFile(string fileName)
+        public void DownloadFile(string fileName, string path)
         {
             PassiveMode();
 
@@ -135,19 +135,23 @@ namespace FTP
             byte[] fileBytes = GetResponesByte(dataSocket, fileSize);
 
             fileName = fileName.Substring(0, fileName.Length - 1);
-            String path = @"C:\\Users\Ignas\" + fileName;
-            File.WriteAllBytes(path, fileBytes);
+            String filePath = path + @"\" + fileName;
+            File.WriteAllBytes(filePath, fileBytes);
 
             response = GetResponse(socket);
             Console.WriteLine(response);
 
         }
 
-        public void UploadFile(String filepath)
+        public bool UploadFile(String filepath)
         {
             PassiveMode();
 
             string file = filepath.Substring(filepath.LastIndexOf('\\') + 1);
+            if (!file.Contains("."))
+            {
+                return false;
+            }
 
             Console.WriteLine(file);
             
@@ -161,7 +165,7 @@ namespace FTP
             byte[] bytes = System.IO.File.ReadAllBytes(fileName);
 
             dataSocket.Send(bytes);
-            
+            return true;
         }
 
         public string GetResponse(Socket socket)
