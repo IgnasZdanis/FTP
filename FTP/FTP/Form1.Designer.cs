@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.connectButton = new System.Windows.Forms.Button();
-            this.loginButton = new System.Windows.Forms.Button();
             this.usernameBox = new System.Windows.Forms.TextBox();
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.disconnectButton = new System.Windows.Forms.Button();
@@ -45,11 +44,16 @@
             this.pathBox = new System.Windows.Forms.TextBox();
             this.renameButton = new System.Windows.Forms.Button();
             this.renameText = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // connectButton
             // 
-            this.connectButton.Location = new System.Drawing.Point(12, 12);
+            this.connectButton.Location = new System.Drawing.Point(356, 8);
             this.connectButton.Name = "connectButton";
             this.connectButton.Size = new System.Drawing.Size(75, 23);
             this.connectButton.TabIndex = 0;
@@ -57,19 +61,9 @@
             this.connectButton.UseVisualStyleBackColor = true;
             this.connectButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // loginButton
-            // 
-            this.loginButton.Location = new System.Drawing.Point(488, 38);
-            this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(75, 23);
-            this.loginButton.TabIndex = 1;
-            this.loginButton.Text = "Login";
-            this.loginButton.UseVisualStyleBackColor = true;
-            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
-            // 
             // usernameBox
             // 
-            this.usernameBox.Location = new System.Drawing.Point(357, 12);
+            this.usernameBox.Location = new System.Drawing.Point(126, 12);
             this.usernameBox.Name = "usernameBox";
             this.usernameBox.Size = new System.Drawing.Size(100, 20);
             this.usernameBox.TabIndex = 2;
@@ -77,7 +71,7 @@
             // 
             // passwordBox
             // 
-            this.passwordBox.Location = new System.Drawing.Point(463, 12);
+            this.passwordBox.Location = new System.Drawing.Point(241, 12);
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.Size = new System.Drawing.Size(100, 20);
             this.passwordBox.TabIndex = 3;
@@ -85,7 +79,7 @@
             // 
             // disconnectButton
             // 
-            this.disconnectButton.Location = new System.Drawing.Point(109, 12);
+            this.disconnectButton.Location = new System.Drawing.Point(463, 8);
             this.disconnectButton.Name = "disconnectButton";
             this.disconnectButton.Size = new System.Drawing.Size(75, 23);
             this.disconnectButton.TabIndex = 4;
@@ -96,14 +90,14 @@
             // fileList
             // 
             this.fileList.FormattingEnabled = true;
-            this.fileList.Location = new System.Drawing.Point(333, 84);
+            this.fileList.Location = new System.Drawing.Point(369, 110);
             this.fileList.Name = "fileList";
-            this.fileList.Size = new System.Drawing.Size(230, 173);
+            this.fileList.Size = new System.Drawing.Size(284, 147);
             this.fileList.TabIndex = 7;
             // 
             // enterFolderButton
             // 
-            this.enterFolderButton.Location = new System.Drawing.Point(324, 265);
+            this.enterFolderButton.Location = new System.Drawing.Point(369, 263);
             this.enterFolderButton.Name = "enterFolderButton";
             this.enterFolderButton.Size = new System.Drawing.Size(75, 23);
             this.enterFolderButton.TabIndex = 8;
@@ -113,7 +107,7 @@
             // 
             // parentDirectoryButton
             // 
-            this.parentDirectoryButton.Location = new System.Drawing.Point(324, 294);
+            this.parentDirectoryButton.Location = new System.Drawing.Point(369, 289);
             this.parentDirectoryButton.Name = "parentDirectoryButton";
             this.parentDirectoryButton.Size = new System.Drawing.Size(75, 23);
             this.parentDirectoryButton.TabIndex = 9;
@@ -123,7 +117,7 @@
             // 
             // downloadButton
             // 
-            this.downloadButton.Location = new System.Drawing.Point(405, 265);
+            this.downloadButton.Location = new System.Drawing.Point(369, 81);
             this.downloadButton.Name = "downloadButton";
             this.downloadButton.Size = new System.Drawing.Size(75, 23);
             this.downloadButton.TabIndex = 11;
@@ -133,7 +127,7 @@
             // 
             // uploadButton
             // 
-            this.uploadButton.Location = new System.Drawing.Point(161, 275);
+            this.uploadButton.Location = new System.Drawing.Point(241, 81);
             this.uploadButton.Name = "uploadButton";
             this.uploadButton.Size = new System.Drawing.Size(75, 23);
             this.uploadButton.TabIndex = 12;
@@ -143,7 +137,7 @@
             // 
             // hostNameBox
             // 
-            this.hostNameBox.Location = new System.Drawing.Point(12, 41);
+            this.hostNameBox.Location = new System.Drawing.Point(11, 12);
             this.hostNameBox.Name = "hostNameBox";
             this.hostNameBox.Size = new System.Drawing.Size(100, 20);
             this.hostNameBox.TabIndex = 13;
@@ -151,9 +145,9 @@
             // localListBox
             // 
             this.localListBox.FormattingEnabled = true;
-            this.localListBox.Location = new System.Drawing.Point(12, 110);
+            this.localListBox.Location = new System.Drawing.Point(12, 136);
             this.localListBox.Name = "localListBox";
-            this.localListBox.Size = new System.Drawing.Size(232, 147);
+            this.localListBox.Size = new System.Drawing.Size(305, 121);
             this.localListBox.TabIndex = 14;
             // 
             // localEnterButton
@@ -179,14 +173,14 @@
             // pathBox
             // 
             this.pathBox.Enabled = false;
-            this.pathBox.Location = new System.Drawing.Point(12, 84);
+            this.pathBox.Location = new System.Drawing.Point(12, 110);
             this.pathBox.Name = "pathBox";
-            this.pathBox.Size = new System.Drawing.Size(232, 20);
+            this.pathBox.Size = new System.Drawing.Size(305, 20);
             this.pathBox.TabIndex = 17;
             // 
             // renameButton
             // 
-            this.renameButton.Location = new System.Drawing.Point(488, 265);
+            this.renameButton.Location = new System.Drawing.Point(578, 263);
             this.renameButton.Name = "renameButton";
             this.renameButton.Size = new System.Drawing.Size(75, 23);
             this.renameButton.TabIndex = 18;
@@ -196,16 +190,67 @@
             // 
             // renameText
             // 
-            this.renameText.Location = new System.Drawing.Point(463, 297);
+            this.renameText.Location = new System.Drawing.Point(521, 292);
             this.renameText.Name = "renameText";
-            this.renameText.Size = new System.Drawing.Size(100, 20);
+            this.renameText.Size = new System.Drawing.Size(132, 20);
             this.renameText.TabIndex = 19;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Host Name";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(123, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 13);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "User Name";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(238, 34);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 13);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Password";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(518, 315);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 13);
+            this.label4.TabIndex = 23;
+            this.label4.Text = "Rename to";
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Location = new System.Drawing.Point(463, 81);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.TabIndex = 24;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 329);
+            this.ClientSize = new System.Drawing.Size(665, 329);
+            this.Controls.Add(this.deleteButton);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.renameText);
             this.Controls.Add(this.renameButton);
             this.Controls.Add(this.pathBox);
@@ -221,7 +266,6 @@
             this.Controls.Add(this.disconnectButton);
             this.Controls.Add(this.passwordBox);
             this.Controls.Add(this.usernameBox);
-            this.Controls.Add(this.loginButton);
             this.Controls.Add(this.connectButton);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -235,7 +279,6 @@
         #endregion
 
         private System.Windows.Forms.Button connectButton;
-        private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.TextBox usernameBox;
         private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.Button disconnectButton;
@@ -251,6 +294,11 @@
         private System.Windows.Forms.TextBox pathBox;
         private System.Windows.Forms.Button renameButton;
         private System.Windows.Forms.TextBox renameText;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button deleteButton;
     }
 }
 

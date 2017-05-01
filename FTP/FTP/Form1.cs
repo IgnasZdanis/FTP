@@ -14,7 +14,6 @@ namespace FTP
     public partial class Form1 : Form
     {
         String currentDirectory = @"C:\Users\Ignas";
-        String previousDirectory = null;
         FTPClient client = null;
         List<String> files = null;
         List<String> localList = null;
@@ -32,13 +31,9 @@ namespace FTP
         private void button1_Click(object sender, EventArgs e)
         {
             client.Connect(hostNameBox.Text, 21);
-        }
-
-        private void loginButton_Click(object sender, EventArgs e)
-        {
             if (client.connected)
             {
-                if (!ResponseSuccesful(client.Send("USER " + usernameBox.Text + "\r\n"))) 
+                if (!ResponseSuccesful(client.Send("USER " + usernameBox.Text + "\r\n")))
                 {
                     MessageBox.Show("Wrong username");
                     return;
@@ -57,6 +52,11 @@ namespace FTP
         private void disconnectButton_Click(object sender, EventArgs e)
         {
             client.Disconnect();
+            Disconnect();
+        }
+
+        private void Disconnect()
+        {
             localListBox.DataSource = null;
             fileList.DataSource = null;
             client.loggedIn = false;
@@ -72,13 +72,21 @@ namespace FTP
         {
             if (client.loggedIn)
             {
-                String folderName = files[fileList.SelectedIndex];
-                if (!ResponseSuccesful(client.ChangeDirectory(folderName)))
+                try
                 {
-                    MessageBox.Show("Not a folder");
-                    return;
+                    String folderName = files[fileList.SelectedIndex];
+                    if (!ResponseSuccesful(client.ChangeDirectory(folderName)))
+                    {
+                        MessageBox.Show("Not a folder");
+                        return;
+                    }
+                    GetList();
                 }
-                GetList();
+                catch
+                {
+                    MessageBox.Show("Error occured!");
+                    Disconnect();
+                }
             }           
         }
 
@@ -86,8 +94,16 @@ namespace FTP
         {
             if (client.loggedIn)
             {
-                client.Send("CDUP\r\n");
-                GetList();
+                try
+                {
+                    client.Send("CDUP\r\n");
+                    GetList();
+                }
+                catch
+                {
+                    MessageBox.Show("Error occured!");
+                    Disconnect();
+                }
             }
         }
 
@@ -102,9 +118,17 @@ namespace FTP
         {
             if (client.loggedIn)
             {
-                String fileName = files[fileList.SelectedIndex];
-                client.DownloadFile(fileName, currentDirectory);
-                GetLocalList();
+                try
+                {
+                    String fileName = files[fileList.SelectedIndex];
+                    client.DownloadFile(fileName, currentDirectory);
+                    GetLocalList();
+                }
+                catch
+                {
+                    MessageBox.Show("Error occured!");
+                    Disconnect();
+                }
             }
         }
 
@@ -112,16 +136,25 @@ namespace FTP
         {
             if (client.loggedIn)
             {
-                string filepath = localList[localListBox.SelectedIndex];
-                if (!client.UploadFile(filepath))
+                try
                 {
-                    MessageBox.Show("Incorrect file!");
-                    return;
-                }
+                    string filepath = localList[localListBox.SelectedIndex];
+                    if (!client.UploadFile(filepath))
+                    {
+                        MessageBox.Show("Incorrect file!");
+                        return;
+                    }
 
-                files = client.GetList();
-                fileList.DataSource = null;
-                fileList.DataSource = files;
+                    files = client.GetList();
+                    fileList.DataSource = null;
+                    fileList.DataSource = files;
+                    GetList();
+                }
+                catch
+                {
+                    MessageBox.Show("Error occured!");
+                    Disconnect();
+                }
             }
         }
 
@@ -168,8 +201,17 @@ namespace FTP
         {
             if (client.loggedIn)
             {
-                currentDirectory = localList[localListBox.SelectedIndex];
-                GetLocalList();
+                try
+                {
+                    currentDirectory = localList[localListBox.SelectedIndex];
+                    GetLocalList();
+                }
+                
+                catch
+                {
+                    MessageBox.Show("Error occured!");
+                    Disconnect();
+                }
             }
         }
 
@@ -177,17 +219,25 @@ namespace FTP
         {
             if (client.loggedIn)
             {
-                if (currentDirectory != @"C:\")
+                try
                 {
-                    currentDirectory = currentDirectory.Substring(0, currentDirectory.LastIndexOf('\\'));
-                    if (currentDirectory == "C:")
+                    if (currentDirectory != @"C:\")
                     {
-                        Console.WriteLine("asd");
-                        currentDirectory = @"C:\";
+                        currentDirectory = currentDirectory.Substring(0, currentDirectory.LastIndexOf('\\'));
+                        if (currentDirectory == "C:")
+                        {
+                            Console.WriteLine("asd");
+                            currentDirectory = @"C:\";
+                        }
+                        Console.WriteLine(currentDirectory);
+                        GetLocalList();
                     }
-                    Console.WriteLine(currentDirectory);
-                    GetLocalList();
                 }                
+                catch
+                {
+                    MessageBox.Show("Error occured!");
+                    Disconnect();
+                }
             }           
         }
 
@@ -195,8 +245,37 @@ namespace FTP
         {
             if (client.loggedIn)
             {
-                //client.Send();
-                client.RenameFile(files[fileList.SelectedIndex], renameText.Text);
+                try
+                {
+                    client.RenameFile(files[fileList.SelectedIndex], renameText.Text);
+                    GetList();
+                }
+                catch
+                {
+                    MessageBox.Show("Error occured!");
+                    Disconnect();
+                }
+            }
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            if (client.loggedIn)
+            {
+                try
+                {
+                    if (!ResponseSuccesful(client.Send("DELE " + files[fileList.SelectedIndex] + "\r\n")))
+                    {
+                        MessageBox.Show("Wrong file selected!");
+                        return;
+                    }
+                    GetList();
+                }
+                catch
+                {
+                    MessageBox.Show("Error occured!");
+                    Disconnect();
+                }
             }
         }
     }
