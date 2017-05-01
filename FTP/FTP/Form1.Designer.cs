@@ -38,6 +38,8 @@
             this.enterFolderButton = new System.Windows.Forms.Button();
             this.parentDirectoryButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.downloadButton = new System.Windows.Forms.Button();
+            this.uploadButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // connectButton
@@ -134,11 +136,33 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
+            // downloadButton
+            // 
+            this.downloadButton.Location = new System.Drawing.Point(263, 277);
+            this.downloadButton.Name = "downloadButton";
+            this.downloadButton.Size = new System.Drawing.Size(75, 23);
+            this.downloadButton.TabIndex = 11;
+            this.downloadButton.Text = "Download";
+            this.downloadButton.UseVisualStyleBackColor = true;
+            this.downloadButton.Click += new System.EventHandler(this.downloadButton_Click);
+            // 
+            // uploadButton
+            // 
+            this.uploadButton.Location = new System.Drawing.Point(363, 277);
+            this.uploadButton.Name = "uploadButton";
+            this.uploadButton.Size = new System.Drawing.Size(75, 23);
+            this.uploadButton.TabIndex = 12;
+            this.uploadButton.Text = "Upload";
+            this.uploadButton.UseVisualStyleBackColor = true;
+            this.uploadButton.Click += new System.EventHandler(this.uploadButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(575, 329);
+            this.Controls.Add(this.uploadButton);
+            this.Controls.Add(this.downloadButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.parentDirectoryButton);
             this.Controls.Add(this.enterFolderButton);
@@ -170,6 +194,8 @@
         private System.Windows.Forms.Button enterFolderButton;
         private System.Windows.Forms.Button parentDirectoryButton;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button downloadButton;
+        private System.Windows.Forms.Button uploadButton;
     }
 }
 

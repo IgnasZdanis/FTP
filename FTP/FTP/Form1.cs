@@ -33,8 +33,11 @@ namespace FTP
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            client.Send("USER Ignas\r\n");
-            client.Send("PASS makaka\r\n");
+            //client.Send("USER Ignas\r\n");
+            //client.Send("PASS makaka\r\n");
+            client.Send("USER " + usernameBox.Text + "\r\n");
+            client.Send("PASS " + passwordBox.Text + "\r\n");
+            //client.PassiveMode();
             GetList();
             //client.PassiveMode();
             //client.Send("LIST\r\n");
@@ -65,7 +68,7 @@ namespace FTP
         private void enterFolderButton_Click(object sender, EventArgs e)
         {
             String folderName = files[fileList.SelectedIndex];
-            client.changeDirectory(folderName);
+            client.ChangeDirectory(folderName);
             GetList();
         }
 
@@ -77,7 +80,7 @@ namespace FTP
 
         private void GetList()
         {
-            files = client.getList();
+            files = client.GetList();
             fileList.DataSource = null;
             fileList.DataSource = files;
         }
@@ -85,6 +88,17 @@ namespace FTP
         private void button1_Click_2(object sender, EventArgs e)
         {
             client.PassiveMode();
+        }
+
+        private void downloadButton_Click(object sender, EventArgs e)
+        {
+            String fileName = files[fileList.SelectedIndex];
+            client.DownloadFile(fileName);
+        }
+
+        private void uploadButton_Click(object sender, EventArgs e)
+        {
+            client.UploadFile();
         }
     }
 }
